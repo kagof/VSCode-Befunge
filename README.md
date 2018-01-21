@@ -21,11 +21,11 @@ Associates `.bf`, `.befunge`, and `.b93` files with Befunge-93, and `.b98` files
 1. Open VS Code, select the extensions icon (Windows: `ctrl` + `shift` + `X`, Mac: `cmd` + `shift` + `X`) and search for `befunge`. Or maybe you are already here in VS Code. Nice!
 2. Click `install`
 3. Restart or reload VS Code when prompted
-4. (Optional) add the custom theming described in [Extension Settings](#Extension-Settings)
+4. (Optional) add the custom theming described in [Extension Settings](#extension-settings)
 
 ## Extension Settings
 
-Does not add any settings to VS Code, however to get the formatting shown in the [screenshots](#Screenshots), some changes to your User Settings are necessary:
+Does not add any settings to VS Code, however to get the formatting shown in the [screenshots](#screenshots), some changes to your User Settings are necessary:
 
 1. Open your user settings (Windows: `ctrl` + `,` Mac: `cmd` + `,`)
 2. Add the following json to your User Settings (or Workspace Settings to only enable it on your current workspace):
