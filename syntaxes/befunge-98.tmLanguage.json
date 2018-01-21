@@ -1,0 +1,127 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Befunge-98",
+	"patterns": [
+		{
+			"match": "[<>v^x]",
+			"name": "keyword.control.direction.absolute.befunge.98",
+			"comment": "absolute movement"
+		},
+		{
+			"match": "[hlm]",
+			"name": "keyword.control.direction.3d.befunge.98",
+			"comment": "high/low movement"
+		},
+		{
+			"match": "[?]",
+			"name": "keyword.control.direction.random.befunge",
+			"comment": "random movement"
+		},
+		{
+			"match": "[_|w]",
+			"name": "keyword.control.direction.conditional.befunge.98",
+			"comment": "conditional movement"
+		},
+		{
+			"match": "[\\[\\]]",
+			"name": "keyword.control.direction.rotate.befunge.98",
+			"comment": "rotate direction of movement"
+		},
+		{
+			"match": "[r]",
+			"name": "keyword.control.direction.reflect.befunge.98",
+			"comment": "reflect direction of movement"
+		},
+		{
+			"match": "[t]",
+			"name": "keyword.control.concurrent.befunge.98",
+			"comment": "Split IP concurrently"
+		},
+		{
+			"match": "[#;j]",
+			"name": "keyword.control.bridge.befunge.98",
+			"comment": "skip"
+		},
+		{
+			"match": "[k]",
+			"name": "keyword.control.repeat.befunge.98",
+			"comment": "repeat the next instruction"
+		},
+		{
+			"match": "[@q]",
+			"name": "keyword.control.end.befunge.98",
+			"comment": "end program"
+		},
+		{
+			"match": "[+\\-*\\/%]",
+			"name": "keyword.operator.arithmetic.befunge",
+			"comment": "mathematical operators"
+		},
+		{
+			"match": "[!`]",
+			"name": "keyword.operator.logical.befunge",
+			"comment": "logical operators"
+		},
+		{
+			"match": "[:\\\\$n{}u]",
+			"name": "keyword.operator.stack.befunge.98",
+			"comment": "stack operators"
+		},
+		{
+			"match": "[()]",
+			"name": "keyword.operator.overload.befunge.98",
+			"comment": "Overload A-Z"
+		},
+		{
+			"match": "[z ]",
+			"name": "keyword.operator.noop.befunge.98",
+			"comment": "No-Op"
+		},
+		{
+			"match": "[\"']",
+			"name": "keyword.operator.stringmode.befunge.98",
+			"comment": "stringmode operators"
+		},
+		{
+			"match": "[&~]",
+			"name": "keyword.operator.io.input.befunge",
+			"comment": "input operators"
+		},
+		{
+			"match": "[.,]",
+			"name": "keyword.operator.io.output.befunge",
+			"comment": "output operators"
+		},
+		{
+			"match": "[io]",
+			"name": "keyword.operator.io.file.befunge.98",
+			"comment": "file I/O operators"
+		},
+		{
+			"match": "[pgs]",
+			"name": "keyword.operator.io.code.befunge.98",
+			"comment": "put/get in program code"
+		},
+		{
+			"match": "[y]",
+			"name": "keyword.operator.system.info.befunge.98",
+			"comment": "get system info"
+		},
+		{
+			"match": "[=]",
+			"name": "keyword.operator.system.execute.befunge.98",
+			"comment": "system execute"
+		},
+		{
+			"match": "[0-9a-f]",
+			"name": "constant.numeric.befunge.98",
+			"comment": "numbers"
+		},
+		{
+			"match": "[A-Z]",
+			"name": "variable.name.overloadable.befunge.98",
+			"comment": "Overloadables"
+		}
+	],
+	"scopeName": "source.befunge.98"
+}

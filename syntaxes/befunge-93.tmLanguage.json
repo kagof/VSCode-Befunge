@@ -1,0 +1,82 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Befunge-93",
+	"patterns": [
+		{
+			"match": "[<>v^]",
+			"name": "keyword.control.direction.absolute.befunge",
+			"comment": "absolute movement"
+		},
+		{
+			"match": "[?]",
+			"name": "keyword.control.direction.random.befunge",
+			"comment": "random movement"
+		},
+		{
+			"match": "[_|]",
+			"name": "keyword.control.direction.conditional.befunge",
+			"comment": "conditional movement"
+		},
+		{
+			"match": "[#]",
+			"name": "keyword.control.bridge.befunge",
+			"comment": "skip next cell"
+		},
+		{
+			"match": "[@]",
+			"name": "keyword.control.end.befunge",
+			"comment": "end program"
+		},
+		{
+			"match": "[+\\-*\\/%]",
+			"name": "keyword.operator.arithmetic.befunge",
+			"comment": "mathematical operators"
+		},
+		{
+			"match": "[!`]",
+			"name": "keyword.operator.logical.befunge",
+			"comment": "logical operators"
+		},
+		{
+			"match": "[:\\\\$]",
+			"name": "keyword.operator.stack.befunge",
+			"comment": "stack operators"
+		},
+		{
+			"match": "[\"]",
+			"name": "keyword.operator.stringmode.befunge",
+			"comment": "stringmode toggle operator"
+		},
+		{
+			"match": "[&~]",
+			"name": "keyword.operator.io.input.befunge",
+			"comment": "input operators"
+		},
+		{
+			"match": "[.,]",
+			"name": "keyword.operator.io.output.befunge",
+			"comment": "output operators"
+		},
+		{
+			"match": "[pg]",
+			"name": "keyword.operator.io.code.befunge",
+			"comment": "put/get in program code"
+		},
+		{
+			"match": "[0-9]",
+			"name": "constant.numeric.befunge",
+			"comment": "numbers"
+		},
+		{
+			"match": "[a-fh-oq-uw-z-A-Z]",
+			"name": "constant.character.befunge",
+			"comment": "characters"
+		},
+		{
+			"match": "['\\[\\]{}=;()]",
+			"name": "constant.character.symbols.befunge",
+			"comment": "unused symbols allowed in strings and comments"
+		}
+	],
+	"scopeName": "source.befunge.93"
+}
