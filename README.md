@@ -3,7 +3,7 @@
 [![Version](https://vsmarketplacebadge.apphb.com/version/kagof.befunge.svg)](https://marketplace.visualstudio.com/items?itemName=kagof.befunge)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs/kagof.befunge.svg)](https://marketplace.visualstudio.com/items?itemName=kagof.befunge)
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating/kagof.befunge.svg)](https://marketplace.visualstudio.com/items?itemName=kagof.befunge)
-[![Build Status](https://travis-ci.org/kagof/VSCode-Befunge.png)](https://travis-ci.org/kagof/VSCode-Befunge)
+[![Build Status](https://img.shields.io/travis/kagof/VSCode-Befunge.svg)](https://travis-ci.org/kagof/VSCode-Befunge)
 
 ## Features
 
