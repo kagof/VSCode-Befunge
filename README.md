@@ -1,31 +1,44 @@
-# Befunge Syntax Highlighting in VS Code
+# Befunge Support in VS Code
 
 [![Version](https://vsmarketplacebadge.apphb.com/version/kagof.befunge.svg)](https://marketplace.visualstudio.com/items?itemName=kagof.befunge)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs/kagof.befunge.svg)](https://marketplace.visualstudio.com/items?itemName=kagof.befunge)
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating/kagof.befunge.svg)](https://marketplace.visualstudio.com/items?itemName=kagof.befunge)
+[![Build Status](https://travis-ci.org/kagof/VSCode-Befunge.png)](https://travis-ci.org/kagof/VSCode-Befunge)
 
 ## Features
 
-Implements Syntax Highlighting for [Befunge-93](https://esolangs.org/wiki/Befunge) and [Befunge-98](https://esolangs.org/wiki/Funge-98) programming languages.
+* Implements Syntax Highlighting in VS Code for [Befunge-93](https://esolangs.org/wiki/Befunge) and [Befunge-98](https://esolangs.org/wiki/Funge-98) programming languages.
+
+* Adds alignment guides coming from the directional characters (`>`, `v`, `<`, `^`, `?`).
 
 Associates `.bf`, `.befunge`, and `.b93` files with Befunge-93, and `.b98` files with Befunge-98.
 
 ## Screenshots
 
-![FizzBuzz Example](https://raw.githubusercontent.com/kagof/VSCode-Befunge/master/assets/screenshot-fizzbuzz.png))
+![FizzBuzz Example](https://raw.githubusercontent.com/kagof/VSCode-Befunge/master/assets/screenshots/screenshot-fizzbuzz.png)
 
-![Factorial Example](https://raw.githubusercontent.com/kagof/VSCode-Befunge/master/assets/screenshot-factorial.png)
+![Factorial Example](https://raw.githubusercontent.com/kagof/VSCode-Befunge/master/assets/screenshots/screenshot-factorial.png)
 
 ## Installation
 
 1. Open VS Code, select the extensions icon (Windows: `ctrl` + `shift` + `X`, Mac: `cmd` + `shift` + `X`) and search for `befunge`. Or maybe you are already here in VS Code. Nice!
 2. Click `install`
 3. Restart or reload VS Code when prompted
-4. (Optional) add the custom theming described in [Extension Settings](#extension-settings)
+4. Add `"befunge.guides.enable": true"` to your Workspace or User Settings if you want to enable Befunge alignment guides.
+    * note: it is recommended that you also add `"editor.renderIndentGuides": false` to your workspace settings if you enable this
+5. (Optional) add the custom theming described in [Extension Settings](#extension-settings)
 
 ## Extension Settings
 
-Does not add any settings to VS Code, however to get the formatting shown in the [screenshots](#screenshots), some changes to your User Settings are necessary:
+Adds the following new configuration settings:
+
+| Name | Default (Type) | Description |
+|------|----------------|-------------|
+|`"befunge.guides.enabled"`|`false` (boolean)|Enable the Befunge guides coming from arrow characters.|
+|`"befunge.guides.color.dark"`|`"rgba(60, 60, 60, 0.75)"` (string)|The Befunge guide line color to use for a dark theme.|
+|`"befunge.guides.color.light"`|`"rgba(220, 220, 220, 0.75)"` (string)|The Befunge guide line color to use for a light theme.|
+
+To get the colors shown in the [screenshots](#screenshots), some changes to your User Settings are necessary:
 
 1. Open your user settings (Windows: `ctrl` + `,` Mac: `cmd` + `,`)
 2. Add the following json to your User Settings (or Workspace Settings to only enable it on your current workspace):
@@ -159,4 +172,8 @@ See also the [changelog](CHANGELOG.md).
 
 ### 1.0.0
 
-- Initial release with support for Befunge-93 and Befunge-98
+* Initial release with support for Befunge-93 and Befunge-98
+
+### 1.1.0
+
+* Support for alignment guides for the directional characters
