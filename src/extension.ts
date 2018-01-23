@@ -25,6 +25,13 @@ export function activate(context: vscode.ExtensionContext) {
       }
     },
     null, context.subscriptions);
+  vscode.workspace.onDidChangeConfiguration(
+    (event) => {
+      if (editor && isBefungeDoc(editor)) {
+        renderer.render(editor);
+      }
+    },
+    null, context.subscriptions);
 }
 
 /**
@@ -40,8 +47,6 @@ function isBefungeDoc(editor: vscode.TextEditor): boolean {
  */
 export class Renderer {
 
-  private enabled: boolean;
-
   private verticalConfig: vscode.DecorationRenderOptions;
   private horizontalConfig: vscode.DecorationRenderOptions;
 
@@ -50,12 +55,11 @@ export class Renderer {
   private colorDark: string;
   private colorLight: string;
 
-
   // regex to find arrows
   private regex = /[v<>^?]/g;
 
   constructor() {
-    this.refresh();
+    this.loadDecorations(this.getConfig());
   }
 
   /**
@@ -63,8 +67,7 @@ export class Renderer {
    * @param editor the current text editor
    */
   render(editor: vscode.TextEditor): void {
-    this.refresh();
-    if (!this.enabled) {
+    if (!this.isEnabled()) {
       return;
     }
     let vRanges: vscode.Range[] = [];
@@ -90,7 +93,7 @@ export class Renderer {
         hRanges = hRanges.concat(this.execLeft(startPos, editor));
       }
     }
-
+    this.refresh(); // refreshes the color configuration
     editor.setDecorations(this.verticalDecoration, vRanges);
     editor.setDecorations(this.horizontalDecoration, hRanges);
   }
@@ -198,23 +201,38 @@ export class Renderer {
   }
 
   /**
-   * Rereads the configuration.
-   * This allows the colors to stay updated, as well as whether to enable/disable guides.
+   * retrieves the current workspace configuration
+   */
+  getConfig(): vscode.WorkspaceConfiguration {
+    return vscode.workspace.getConfiguration('befunge.guides');
+  }
+
+  /**
+   * Returns whether or not alignment guides are enabled in the workspace configuration.
+   */
+  isEnabled(): boolean {
+    return this.getConfig().enabled;
+  }
+
+  /**
+   * Rereads the configuration, purging old decorations and reloading styles as needed.
    */
   refresh(): void {
-    const cfg: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration('befunge.guides');
-    this.enabled = cfg.enable;
+    const cfg: vscode.WorkspaceConfiguration = this.getConfig();
     if (this.colorDark !== cfg.color.dark || this.colorLight !== cfg.color.light) {
-      this.colorDark = cfg.color.dark;
-      this.colorLight = cfg.color.light;
-      this.refreshDecorations();
+      this.verticalDecoration.dispose(); // erase all vertical decorations in old style
+      this.horizontalDecoration.dispose(); // erase all horizontal decorations in old style
+      this.loadDecorations(cfg);
     }
   }
 
   /**
    * Refreshes the decorations. To be called when a color configuration has been changed.
+   * @param config the configuration to load the decorations from
    */
-  refreshDecorations() {
+  loadDecorations(config: vscode.WorkspaceConfiguration): void {
+    this.colorDark = config.color.dark;
+    this.colorLight = config.color.light;
     this.verticalConfig = {
       dark: {
         outlineWidth: '1px',

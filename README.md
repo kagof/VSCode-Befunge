@@ -2,8 +2,8 @@
 
 [![Version](https://vsmarketplacebadge.apphb.com/version/kagof.befunge.svg)](https://marketplace.visualstudio.com/items?itemName=kagof.befunge)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs/kagof.befunge.svg)](https://marketplace.visualstudio.com/items?itemName=kagof.befunge)
-[![Ratings](https://vsmarketplacebadge.apphb.com/rating/kagof.befunge.svg)](https://marketplace.visualstudio.com/items?itemName=kagof.befunge)
 [![Build Status](https://img.shields.io/travis/kagof/VSCode-Befunge.svg)](https://travis-ci.org/kagof/VSCode-Befunge)
+[![Known Vulnerabilities](https://snyk.io/test/github/kagof/vscode-befunge/badge.svg?targetFile=package.json)](https://snyk.io/test/github/kagof/vscode-befunge?targetFile=package.json)
 
 ## Features
 
@@ -34,9 +34,9 @@ Adds the following new configuration settings:
 
 | Name | Default (Type) | Description |
 |------|----------------|-------------|
-|`"befunge.guides.enabled"`|`false` (boolean)|Enable the Befunge guides coming from arrow characters.|
-|`"befunge.guides.color.dark"`|`"rgba(60, 60, 60, 0.75)"` (string)|The Befunge guide line color to use for a dark theme.|
-|`"befunge.guides.color.light"`|`"rgba(220, 220, 220, 0.75)"` (string)|The Befunge guide line color to use for a light theme.|
+|`"befunge.guides.enabled"`|`true` (boolean)|Enable the Befunge guides coming from arrow characters.|
+|`"befunge.guides.color.dark"`|`"#3c3c3c"` (*#rrggbb* hex string)|The Befunge guide line color to use for a dark theme.|
+|`"befunge.guides.color.light"`|`"#dcdcdc"` (*#rrggbb* hex string)|The Befunge guide line color to use for a light theme.|
 
 To get the colors shown in the [screenshots](#screenshots), some changes to your User Settings are necessary:
 
@@ -170,10 +170,18 @@ Find an issue/bug? [Report it](https://github.com/kagof/VSCode-Befunge-syntax-hi
 
 See also the [changelog](CHANGELOG.md).
 
-### 1.0.0
+### 1.2.0
 
-* Initial release with support for Befunge-93 and Befunge-98
+* Restrict colors to 6 digit hex colors as other formats can cause problems, especially with the horizontal lines
+* Purge decorations of the old style when color configuration changes, as otherwise it would persist until editor is closed
+* Renamed `"befunge.guides.enable"` configuration property to `"befunge.guides.enabled"` to match README and code
+* Set some default editor configurations for Befunge-93 and 98 files, including turning off indent guides, line highlight, trailing whitespace trimming, autoindent, and quick suggestions
+* Because indent guides are now disabled by default, `"befunge.guides.enabled"` now defaults to `true`
 
 ### 1.1.0
 
 * Support for alignment guides for the directional characters
+
+### 1.0.0
+
+* Initial release with support for Befunge-93 and Befunge-98

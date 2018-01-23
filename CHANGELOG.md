@@ -5,6 +5,20 @@ All notable changes to the Befunge VS Code extension will be documented in this 
 The format of this changelog is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 1.2.0 - 2018-01-22
+
+### Added
+
+* default editor configurations for Befunge-93 and 98 files, including turning off indent guides, line highlight, trailing whitespace trimming, autoindent, and quick suggestions. See the "Contributions" tab in VS Code for details
+* restriction on colors: previously accepted any string, now only accepts 6 digit hex colors. This prevents some bugs in rendering, especially in rendering horizontal guides
+* extension now renders guides on a change in configuration
+
+### Changed
+
+* fixed bug where guide lines in the old color could still persist after a color change
+* `"befunge.guides.enable"` renamed to `"befunge.guides.enabled"`
+* `"befunge.guides.enabled"` now defaults to `true`
+
 ## 1.1.0 - 2018-01-21
 
 ### Added

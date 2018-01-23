@@ -5,9 +5,13 @@
     "author": {
         "name": "Karl Goffin"
     },
-    "version": "1.1.0",
+    "version": "1.2.0",
     "publisher": "kagof",
     "icon": "assets/icon.png",
+    "galleryBanner": {
+        "color": "#1c232d",
+        "theme": "dark"
+    },
     "license": "SEE LICENSE IN LICENSE.md",
     "repository": {
         "type": "git",
@@ -78,22 +82,52 @@
         ],
         "configuration": {
             "type": "object",
-            "title": "Befunge configuration",
+            "title": "Befunge Configuration",
             "properties": {
-                "befunge.guides.enable": {
+                "befunge.guides.enabled": {
                     "type": "boolean",
-                    "default": false,
-                    "description": "Enable the Befunge guides coming from arrow characters. It is highly recommended that you set \"editor.renderIndentGuides\" to false if you enable this."
+                    "default": true,
+                    "description": "Enable the Befunge guides coming from arrow characters."
                 },
                 "befunge.guides.color.dark": {
                     "type": "string",
-                    "default": "rgba(60, 60, 60, 0.75)",
-                    "description": "The Befunge guide line color to use for a dark theme."
+                    "format": "color-hex",
+                    "pattern": "^#[0-9a-f]{6}$",
+                    "default": "#3c3c3c",
+                    "description": "The Befunge guide line color to use for a dark theme. Currently restricted to 6 digit hex as other values may cause issues."
                 },
                 "befunge.guides.color.light": {
                     "type": "string",
-                    "default": "rgba(220, 220, 220, 0.75)",
-                    "description": "The Befunge guide line color to use for a light theme."
+                    "format": "color-hex",
+                    "pattern": "^#[0-9a-f]{6}$",
+                    "default": "#dcdcdc",
+                    "description": "The Befunge guide line color to use for a light theme. Currently restricted to 6 digit hex as other values may cause issues."
+                }
+            }
+        },
+        "configurationDefaults": {
+            "[befunge]": {
+                "editor.renderIndentGuides": false,
+                "editor.renderLineHighlight": "none",
+                "files.trimTrailingWhitespace": false,
+                "editor.autoIndent": false,
+                "editor.acceptSuggestionOnEnter": "off",
+                "editor.quickSuggestions": {
+                    "other": false,
+                    "comments": false,
+                    "strings": false
+                }
+            },
+            "[befunge98]": {
+                "editor.renderIndentGuides": false,
+                "editor.renderLineHighlight": "none",
+                "files.trimTrailingWhitespace": false,
+                "editor.autoIndent": false,
+                "editor.acceptSuggestionOnEnter": "off",
+                "editor.quickSuggestions": {
+                    "other": false,
+                    "comments": false,
+                    "strings": false
                 }
             }
         }
