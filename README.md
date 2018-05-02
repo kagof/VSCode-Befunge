@@ -170,6 +170,10 @@ Find an issue/bug? [Report it](https://github.com/kagof/VSCode-Befunge-syntax-hi
 
 See also the [changelog](CHANGELOG.md).
 
+### 1.2.1
+
+* Update npm dependencies, addressing Github notification of a dependency vulnerability
+
 ### 1.2.0
 
 * Restrict colors to 6 digit hex colors as other formats can cause problems, especially with the horizontal lines

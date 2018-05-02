@@ -5,6 +5,12 @@ All notable changes to the Befunge VS Code extension will be documented in this 
 The format of this changelog is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 1.2.1 - 2018-05-01
+
+### Changed
+
+* updated dependencies to address Github notification about [MAID vulnerability in hoek](https://www.cvedetails.com/cve/CVE-2018-3728/) resolved in version `5.0.3`. It appears that version `4.2.1` also fixes this, but to be safe (and to ensure the warning is resolved) all `hoek` dependencies have been updated to `^5.0.3`
+
 ## 1.2.0 - 2018-01-22
 
 ### Added
