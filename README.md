@@ -170,6 +170,10 @@ Find an issue/bug? [Report it](https://github.com/kagof/VSCode-Befunge-syntax-hi
 
 See also the [changelog](CHANGELOG.md).
 
+### 1.2.2
+
+* Update npm dependencies addressing (another) low priority npm vulnerability alert.
+
 ### 1.2.1
 
 * Update npm dependencies, addressing Github notification of a dependency vulnerability

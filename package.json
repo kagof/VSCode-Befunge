@@ -5,7 +5,7 @@
     "author": {
         "name": "Karl Goffin"
     },
-    "version": "1.2.1",
+    "version": "1.2.2",
     "publisher": "kagof",
     "icon": "assets/icon.png",
     "galleryBanner": {
@@ -23,7 +23,7 @@
         "vscode": "^1.19.0"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "keywords": [
         "befunge",
@@ -141,14 +141,14 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "@types/mocha": "^5.2.0",
-        "@types/node": "^10.0.0",
-        "mocha": "^5.1.1",
-        "tslint": "^5.9.1",
-        "tslint-config-airbnb": "^5.8.0",
+        "@types/mocha": "^5.2.5",
+        "@types/node": "^10.11.6",
+        "mocha": "^5.2.0",
+        "tslint": "^5.11.0",
+        "tslint-config-airbnb": "^5.11.0",
         "typemoq": "^2.1.0",
-        "typescript": "^2.8.3",
-        "vscode": "^1.1.14"
+        "typescript": "^2.9.2",
+        "vscode": "^1.1.21"
     },
     "dependencies": {}
 }
