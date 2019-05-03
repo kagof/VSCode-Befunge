@@ -5,7 +5,15 @@ All notable changes to the Befunge VS Code extension will be documented in this 
 The format of this changelog is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 1.2.3 - 2019-05-02
+
+### Changed
+
+* long overdue update of dependencies to resolve more npm vulnerability alerts.
+
 ## 1.2.2 - 2018-10-09
+
+### Changed
 
 * updated dependencies to address (another) low priority npm dependency vulnerability alert.
 
