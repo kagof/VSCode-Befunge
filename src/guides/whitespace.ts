@@ -16,8 +16,9 @@ export interface HorizontalAndVerticalRanges {
 /**
  * finds all valid whitespace ranges on the current editor that are pointed to by a Befunge control character.
  * @param editor the current text editor.
+ * @param shouldWrap whether to wrap the lines around when they hit the 'edge' of the torus
  */
-export function findWhitespaceRanges(editor: vscode.TextEditor): HorizontalAndVerticalRanges {
+export function findWhitespaceRanges(editor: vscode.TextEditor, shouldWrap: boolean): HorizontalAndVerticalRanges {
   let vRanges: vscode.Range[] = [];
   let hRanges: vscode.Range[] = [];
   const text = editor.document.getText();
@@ -28,16 +29,16 @@ export function findWhitespaceRanges(editor: vscode.TextEditor): HorizontalAndVe
 
     const startPos: vscode.Position = editor.document.positionAt(absoluteIndex);
     if (_matches(match, 'v', '?')) {
-      vRanges = vRanges.concat(this._findConnectedWhitespaceDown(startPos, editor));
+      vRanges = vRanges.concat(this._findConnectedWhitespaceDown(startPos, editor, shouldWrap));
     }
     if (_matches(match, '^', '?')) {
-      vRanges = vRanges.concat(this._findConnectedWhitespaceUp(startPos, editor));
+      vRanges = vRanges.concat(this._findConnectedWhitespaceUp(startPos, editor, shouldWrap));
     }
     if (_matches(match, '>', '?')) {
-      hRanges = hRanges.concat(this._findConnectedWhitespaceRight(startPos, editor));
+      hRanges = hRanges.concat(this._findConnectedWhitespaceRight(startPos, editor, shouldWrap));
     }
     if (_matches(match, '<', '?')) {
-      hRanges = hRanges.concat(this._findConnectedWhitespaceLeft(startPos, editor));
+      hRanges = hRanges.concat(this._findConnectedWhitespaceLeft(startPos, editor, shouldWrap));
     }
   }
   return { horizontalRanges: hRanges, verticalRanges: vRanges };
@@ -66,43 +67,80 @@ export function _isWhiteSpace(char: string): boolean {
 }
 
 /**
- * finds the whitespace between startPos and the next non-whitespace character below startPos
- * @param startPos the position of the v or ? character
+ * finds the whitespace between start and the next non-whitespace character below start
+ * @param start the position of the v or ? character
  * @param editor the current editor
+ * @param wrap whether to wrap when the 'edge' of the torus is reached
  */
 // tslint:disable-next-line:function-name exported for testing
-export function _findConnectedWhitespaceDown(startPos: vscode.Position, editor: vscode.TextEditor): vscode.Range[] {
-  return findConnectedWhitespaceVert(startPos, editor, i => i + 1, i => i < editor.document.lineCount);
+export function _findConnectedWhitespaceDown(start: vscode.Position, editor: vscode.TextEditor, wrap: boolean): vscode.Range[] {
+  const edge = editor.document.lineCount - 1;
+  const noWrap = findConnectedWhitespaceVert(start, editor, i => i + 1, i => i <= edge, false);
+  if (wrap && noWrap.isAtEdge) {
+    return  [
+      ...noWrap.ranges,
+      ...findConnectedWhitespaceVert(start.with(0, start.character), editor, i => i + 1, i => i <= edge, true).ranges,
+    ];
+  }
+  return noWrap.ranges;
 }
 
 /**
- * finds the whitespace between startPos and the next non-whitespace character above startPos
- * @param startPos the position of the ^ or ? character
+ * finds the whitespace between start and the next non-whitespace character above start
+ * @param start the position of the ^ or ? character
  * @param editor the current editor
+ * @param wrap whether to wrap when the 'edge' of the torus is reached
  */
 // tslint:disable-next-line:function-name exported for testing
-export function _findConnectedWhitespaceUp(startPos: vscode.Position, editor: vscode.TextEditor): vscode.Range[] {
-  return findConnectedWhitespaceVert(startPos, editor, i => i - 1, i => i >= 0);
+export function _findConnectedWhitespaceUp(start: vscode.Position, editor: vscode.TextEditor, wrap: boolean): vscode.Range[] {
+  const noWrap = findConnectedWhitespaceVert(start, editor, i => i - 1, i => i >= 0, false);
+  if (wrap && noWrap.isAtEdge) {
+    const otherSide = editor.document.lineCount - 1;
+    return [
+      ...noWrap.ranges,
+      ...findConnectedWhitespaceVert(start.with(otherSide, start.character), editor, i => i - 1, i => i >= 0, true).ranges,
+    ];
+  }
+  return noWrap.ranges;
 }
 
 /**
- * finds the whitespace between startPos and the next non-whitespace character right of startPos
- * @param startPos the position of the > or ? character
+ * finds the whitespace between start and the next non-whitespace character right of start
+ * @param start the position of the > or ? character
  * @param editor the current editor
+ * @param wrap whether to wrap when the 'edge' of the torus is reached
  */
 // tslint:disable-next-line:function-name exported for testing
-export function _findConnectedWhitespaceRight(startPos: vscode.Position, editor: vscode.TextEditor): vscode.Range[] {
-  return findConnectedWhitespaceHoriz(startPos, editor, c => c + 1, (c, line) => c < line.length);
+export function _findConnectedWhitespaceRight(start: vscode.Position, editor: vscode.TextEditor, wrap: boolean): vscode.Range[] {
+  const line = editor.document.lineAt(start.line).text;
+  const edge = line.length - 1;
+  const noWrap = findConnectedWhitespaceHoriz(start, editor, c => c + 1, c => c <= edge, false);
+  if (wrap && noWrap.isAtEdge) {
+    return [
+      ...noWrap.ranges,
+      ...findConnectedWhitespaceHoriz(start.with(start.line, 0), editor, c => c + 1, c => c <= edge, true).ranges,
+    ];
+  }
+  return noWrap.ranges;
 }
 
 /**
- * finds the whitespace between startPos and the next non-whitespace character left of startPos
- * @param startPos the position of the < or ? character
+ * finds the whitespace between start and the next non-whitespace character left of start
+ * @param start the position of the < or ? character
  * @param editor the current editor
+ * @param wrap whether to wrap when the 'edge' of the torus is reached
  */
 // tslint:disable-next-line:function-name exported for testing
-export function _findConnectedWhitespaceLeft(startPos: vscode.Position, editor: vscode.TextEditor): vscode.Range[] {
-  return findConnectedWhitespaceHoriz(startPos, editor, c => c - 1, c => c >= 0);
+export function _findConnectedWhitespaceLeft(start: vscode.Position, editor: vscode.TextEditor, wrap: boolean): vscode.Range[] {
+  const noWrap = findConnectedWhitespaceHoriz(start, editor, c => c - 1, c => c >= 0, false);
+  if (wrap && noWrap.isAtEdge) {
+    const otherSide = editor.document.lineAt(start.line).text.length - 1;
+    return [
+      ...noWrap.ranges,
+      ...findConnectedWhitespaceHoriz(start.with(start.line, otherSide), editor, c => c - 1, c => c >= 0, true).ranges,
+    ];
+  }
+  return noWrap.ranges;
 }
 
 /**
@@ -111,22 +149,26 @@ export function _findConnectedWhitespaceLeft(startPos: vscode.Position, editor: 
  * @param editor the current editor
  * @param succ the successor to the current character index
  * @param predicate the predicate of the character index with terminates the loop
+ * @param includeStart whether to include the startPos in the check. Used for wrapping
  */
 function findConnectedWhitespaceHoriz(
     startPos: vscode.Position,
     editor: vscode.TextEditor,
     succ: (charIndex: number) => number,
-    predicate: (charIndex: number, line: string) => boolean,
-  ): vscode.Range[] {
+    predicate: (charIndex: number) => boolean,
+    includeStart: boolean,
+  ): { ranges: vscode.Range[], isAtEdge: boolean } {
   const outRanges: vscode.Range[] = [];
   let charIndex: number = startPos.character;
   const lineIndex: number = startPos.line;
   const line: string = editor.document.lineAt(lineIndex).text;
   const posList: vscode.Position[] = [];
-  for (charIndex = succ(charIndex); predicate(charIndex, line); charIndex = succ(charIndex)) {
+  let hitACharacter = false;
+  for (charIndex = includeStart ? charIndex : succ(charIndex); predicate(charIndex); charIndex = succ(charIndex)) {
     if (_isWhiteSpace(line[charIndex])) {
       posList.push(new vscode.Position(lineIndex, charIndex));
     } else {
+      hitACharacter = true;
       break; // character was not whitespace
     }
   }
@@ -137,7 +179,7 @@ function findConnectedWhitespaceHoriz(
     outRanges.push(new vscode.Range(sorted[0], sorted[sorted.length - 1].translate(0, 1)));
   }
 
-  return outRanges;
+  return { ranges: outRanges, isAtEdge: !hitACharacter };
 }
 
 /**
@@ -146,17 +188,20 @@ function findConnectedWhitespaceHoriz(
  * @param editor the current editor
  * @param succ the successor to the current line index
  * @param predicate the predicate of the line index with terminates the loop
+ * @param includeStart whether to include the startPos in the check. Used for wrapping
  */
 function findConnectedWhitespaceVert(
     startPos: vscode.Position,
     editor: vscode.TextEditor,
     succ: (lineIndex: number) => number,
     predicate: (lineIndex: number) => boolean,
-  ): vscode.Range[] {
+    includeStart: boolean,
+  ): { ranges: vscode.Range[], isAtEdge: boolean } {
   const outRanges: vscode.Range[] = [];
   const charIndex: number = startPos.character;
   let lineIndex: number = startPos.line;
-  for (lineIndex = succ(lineIndex); predicate(lineIndex); lineIndex = succ(lineIndex)) {
+  let hitACharacter = false;
+  for (lineIndex = includeStart ? lineIndex : succ(lineIndex); predicate(lineIndex); lineIndex = succ(lineIndex)) {
     const line: string = editor.document.lineAt(lineIndex).text;
 
     if (line.length > charIndex) {
@@ -164,9 +209,10 @@ function findConnectedWhitespaceVert(
         const pos: vscode.Position = new vscode.Position(lineIndex, charIndex);
         outRanges.push(new vscode.Range(pos, pos));
       } else {
+        hitACharacter = true;
         break; // character was not whitespace
       }
     }
   }
-  return outRanges;
+  return { ranges: outRanges, isAtEdge: !hitACharacter };
 }

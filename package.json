@@ -89,6 +89,11 @@
           "default": true,
           "description": "Enable the Befunge guides coming from arrow characters."
         },
+        "befunge.guides.wrap": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable the Befunge guides coming from arrow characters to wrap to the other side when the edge of the code torus is hit."
+        },
         "befunge.guides.color.dark": {
           "type": "string",
           "format": "color-hex",

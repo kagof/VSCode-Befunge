@@ -25,6 +25,7 @@ export class Configurer {
    */
   refresh(renderer: Renderer, forceRefreshConfig: boolean = false): void {
     const cfg: vscode.WorkspaceConfiguration = forceRefreshConfig ? this.forceRefreshConfig() : this.getConfig();
+    renderer.shouldWrap = cfg.wrap;
     if (this.colorDark !== cfg.color.dark || this.colorLight !== cfg.color.light) {
       renderer.verticalDecoration && renderer.verticalDecoration.dispose(); // erase all vertical decorations in old style
       renderer.horizontalDecoration && renderer.horizontalDecoration.dispose(); // erase all horizontal decorations in old style
@@ -53,11 +54,11 @@ export class Configurer {
   /**
    * Refreshes the decorations. To be called when a color configuration has been changed.
    * @param renderer the renderer to update, if needed
-   * @param config the configuration to load the decorations from
+   * @param cfg the configuration to load the decorations from
    */
-  private loadDecorations(renderer: Renderer, config: vscode.WorkspaceConfiguration): void {
-    this.colorDark = config.color.dark;
-    this.colorLight = config.color.light;
+  private loadDecorations(renderer: Renderer, cfg: vscode.WorkspaceConfiguration): void {
+    this.colorDark = cfg.color.dark;
+    this.colorLight = cfg.color.light;
     const verticalConfig = {
       dark: {
         outlineWidth: '1px',

@@ -8,6 +8,8 @@ import { Configurer } from './configurer';
 export class Renderer {
   private configurer: Configurer;
 
+  shouldWrap: boolean = false;
+
   verticalDecoration: vscode.TextEditorDecorationType;
   horizontalDecoration: vscode.TextEditorDecorationType;
 
@@ -23,10 +25,10 @@ export class Renderer {
     if (!this.configurer.isEnabled()) {
       return;
     }
+    this.configurer.refresh(this); // refreshes the renderer's configuration
 
-    const ranges: whitespace.HorizontalAndVerticalRanges = whitespace.findWhitespaceRanges(editor);
+    const ranges: whitespace.HorizontalAndVerticalRanges = whitespace.findWhitespaceRanges(editor, this.shouldWrap);
 
-    this.configurer.refresh(this); // refreshes the color configuration
     editor.setDecorations(this.verticalDecoration, ranges.verticalRanges);
     editor.setDecorations(this.horizontalDecoration, ranges.horizontalRanges);
   }

@@ -35,6 +35,7 @@ Adds the following new configuration settings:
 | Name | Default (Type) | Description |
 |------|----------------|-------------|
 |`"befunge.guides.enabled"`|`true` (boolean)|Enable the Befunge guides coming from arrow characters.|
+|`"befunge.guides.wrap"`|`false` (boolean)|Enable the Befunge guides coming from arrow characters to wrap to the other side when the edge of the code torus is hit.|
 |`"befunge.guides.color.dark"`|`"#3c3c3c"` (*#rrggbb* hex string)|The Befunge guide line color to use for a dark theme.|
 |`"befunge.guides.color.light"`|`"#dcdcdc"` (*#rrggbb* hex string)|The Befunge guide line color to use for a light theme.|
 
