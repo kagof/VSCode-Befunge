@@ -165,7 +165,7 @@ Find an issue/bug? [Report it](https://github.com/kagof/VSCode-Befunge-syntax-hi
 
 ## Contributing
 
-Contributions are encouraged - whether pull requests, bug reports, documentation, or feature requests. Please read, understand, and agree to the [Contributing Guidelines & Code of Conduct](CONTRIBUTING.md) first.
+Contributions are encouraged - whether pull requests, bug reports, documentation, or feature requests. Please read, understand, and agree to the [Contributing Guidelines](CONTRIBUTING.md) & [Code of Conduct](CODE_OF_CONDUCT.md) first.
 
 ## Source
 
