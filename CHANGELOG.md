@@ -5,6 +5,19 @@ All notable changes to the Befunge VS Code extension will be documented in this 
 The format of this changelog is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 1.2.4 - 2019-07-20
+
+### Changed
+
+* dependecy updates:
+
+  * Bump mocha from 5.2.0 to 6.2.0
+  * \[Security\] Bump lodash from 4.17.11 to 4.17.15
+  * Bump tslint-config-airbnb from 5.11.0 to 5.11.1
+  * Bump typescript from 2.9.2 to 3.5.3
+  * Bump @types/mocha from 5.2.5 to 5.2.7
+  * Bump tslint from 5.11.0 to 5.18.0
+
 ## 1.2.3 - 2019-05-02
 
 ### Changed

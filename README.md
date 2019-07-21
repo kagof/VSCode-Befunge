@@ -164,7 +164,7 @@ Find an issue/bug? [Report it](https://github.com/kagof/VSCode-Befunge-syntax-hi
 
 ## Contributing
 
-Contributions are encouraged - whether pull requests, bug reports, documentation, or feature requests. Please read, understand, and agree to the [Contributing Guidelines & Code of Conduct](https://github.com/kagof/VSCode-Befunge-syntax-highlighting/blob/branch/CONTRIBUTING.md) first.
+Contributions are encouraged - whether pull requests, bug reports, documentation, or feature requests. Please read, understand, and agree to the [Contributing Guidelines & Code of Conduct](CONTRIBUTING.md) first.
 
 ## Source
 
@@ -173,6 +173,10 @@ Contributions are encouraged - whether pull requests, bug reports, documentation
 ## Release Notes
 
 See also the [changelog](CHANGELOG.md).
+
+### 1.2.4
+
+* multiple dependency updates.
 
 ### 1.2.3
 
