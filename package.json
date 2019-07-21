@@ -1,155 +1,155 @@
 {
-    "name": "befunge",
-    "displayName": "Befunge",
-    "description": "Adds syntax highlighting and alignment guides for Befunge-93 and Befunge-98 programming languages",
-    "author": {
-        "name": "Karl Goffin"
-    },
-    "version": "1.2.4",
-    "publisher": "kagof",
-    "icon": "assets/icon.png",
-    "galleryBanner": {
-        "color": "#1c232d",
-        "theme": "dark"
-    },
-    "license": "SEE LICENSE IN LICENSE.md",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/kagof/VSCode-Befunge"
-    },
-    "main": "./out/extension",
-    "homepage": "https://github.com/kagof/VSCode-Befunge",
-    "engines": {
-        "vscode": "^1.19.0"
-    },
-    "categories": [
-        "Programming Languages"
-    ],
-    "keywords": [
-        "befunge",
-        "esoteric",
-        "befunge-93",
-        "befunge-98",
-        "funge-98"
-    ],
-    "bugs": {
-        "url": "https://github.com/kagof/VSCode-Befunge/issues"
-    },
-    "activationEvents": [
-        "*"
-    ],
-    "contributes": {
-        "languages": [
-            {
-                "id": "befunge",
-                "aliases": [
-                    "Befunge",
-                    "befunge",
-                    "Befunge-93"
-                ],
-                "extensions": [
-                    ".bf",
-                    ".befunge",
-                    ".b93"
-                ],
-                "configuration": "./befunge-configuration.json"
-            },
-            {
-                "id": "befunge98",
-                "aliases": [
-                    "Befunge98",
-                    "befunge98",
-                    "Befunge-98",
-                    "funge-98"
-                ],
-                "extensions": [
-                    ".b98"
-                ],
-                "configuration": "./befunge-configuration.json"
-            }
+  "name": "befunge",
+  "displayName": "Befunge",
+  "description": "Adds syntax highlighting and alignment guides for Befunge-93 and Befunge-98 programming languages",
+  "author": {
+    "name": "Karl Goffin"
+  },
+  "version": "1.2.4",
+  "publisher": "kagof",
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#1c232d",
+    "theme": "dark"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kagof/VSCode-Befunge"
+  },
+  "main": "./out/extension",
+  "homepage": "https://github.com/kagof/VSCode-Befunge",
+  "engines": {
+    "vscode": "^1.19.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "befunge",
+    "esoteric",
+    "befunge-93",
+    "befunge-98",
+    "funge-98"
+  ],
+  "bugs": {
+    "url": "https://github.com/kagof/VSCode-Befunge/issues"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "befunge",
+        "aliases": [
+          "Befunge",
+          "befunge",
+          "Befunge-93"
         ],
-        "grammars": [
-            {
-                "language": "befunge",
-                "scopeName": "source.befunge.93",
-                "path": "./syntaxes/befunge-93.tmLanguage.json"
-            },
-            {
-                "language": "befunge98",
-                "scopeName": "source.befunge.98",
-                "path": "./syntaxes/befunge-98.tmLanguage.json"
-            }
+        "extensions": [
+          ".bf",
+          ".befunge",
+          ".b93"
         ],
-        "configuration": {
-            "type": "object",
-            "title": "Befunge Configuration",
-            "properties": {
-                "befunge.guides.enabled": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Enable the Befunge guides coming from arrow characters."
-                },
-                "befunge.guides.color.dark": {
-                    "type": "string",
-                    "format": "color-hex",
-                    "pattern": "^#[0-9a-f]{6}$",
-                    "default": "#3c3c3c",
-                    "description": "The Befunge guide line color to use for a dark theme. Currently restricted to 6 digit hex as other values may cause issues."
-                },
-                "befunge.guides.color.light": {
-                    "type": "string",
-                    "format": "color-hex",
-                    "pattern": "^#[0-9a-f]{6}$",
-                    "default": "#dcdcdc",
-                    "description": "The Befunge guide line color to use for a light theme. Currently restricted to 6 digit hex as other values may cause issues."
-                }
-            }
+        "configuration": "./befunge-configuration.json"
+      },
+      {
+        "id": "befunge98",
+        "aliases": [
+          "Befunge98",
+          "befunge98",
+          "Befunge-98",
+          "funge-98"
+        ],
+        "extensions": [
+          ".b98"
+        ],
+        "configuration": "./befunge-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "befunge",
+        "scopeName": "source.befunge.93",
+        "path": "./syntaxes/befunge-93.tmLanguage.json"
+      },
+      {
+        "language": "befunge98",
+        "scopeName": "source.befunge.98",
+        "path": "./syntaxes/befunge-98.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Befunge Configuration",
+      "properties": {
+        "befunge.guides.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the Befunge guides coming from arrow characters."
         },
-        "configurationDefaults": {
-            "[befunge]": {
-                "editor.renderIndentGuides": false,
-                "editor.renderLineHighlight": "none",
-                "files.trimTrailingWhitespace": false,
-                "editor.autoIndent": false,
-                "editor.acceptSuggestionOnEnter": "off",
-                "editor.quickSuggestions": {
-                    "other": false,
-                    "comments": false,
-                    "strings": false
-                }
-            },
-            "[befunge98]": {
-                "editor.renderIndentGuides": false,
-                "editor.renderLineHighlight": "none",
-                "files.trimTrailingWhitespace": false,
-                "editor.autoIndent": false,
-                "editor.acceptSuggestionOnEnter": "off",
-                "editor.quickSuggestions": {
-                    "other": false,
-                    "comments": false,
-                    "strings": false
-                }
-            }
+        "befunge.guides.color.dark": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#[0-9a-f]{6}$",
+          "default": "#3c3c3c",
+          "description": "The Befunge guide line color to use for a dark theme. Currently restricted to 6 digit hex as other values may cause issues."
+        },
+        "befunge.guides.color.light": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#[0-9a-f]{6}$",
+          "default": "#dcdcdc",
+          "description": "The Befunge guide line color to use for a light theme. Currently restricted to 6 digit hex as other values may cause issues."
         }
+      }
     },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "lint": "node ./node_modules/tslint/bin/tslint --project tsconfig.json src/**/*.ts",
-        "pretest": "npm run lint",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "@types/mocha": "^5.2.7",
-        "@types/node": "^10.11.6",
-        "mocha": "^6.2.0",
-        "tslint": "^5.18.0",
-        "tslint-config-airbnb": "^5.11.1",
-        "typemoq": "^2.1.0",
-        "typescript": "^3.5.3",
-        "vscode": "^1.1.33"
-    },
-    "dependencies": {}
+    "configurationDefaults": {
+      "[befunge]": {
+        "editor.renderIndentGuides": false,
+        "editor.renderLineHighlight": "none",
+        "files.trimTrailingWhitespace": false,
+        "editor.autoIndent": false,
+        "editor.acceptSuggestionOnEnter": "off",
+        "editor.quickSuggestions": {
+          "other": false,
+          "comments": false,
+          "strings": false
+        }
+      },
+      "[befunge98]": {
+        "editor.renderIndentGuides": false,
+        "editor.renderLineHighlight": "none",
+        "files.trimTrailingWhitespace": false,
+        "editor.autoIndent": false,
+        "editor.acceptSuggestionOnEnter": "off",
+        "editor.quickSuggestions": {
+          "other": false,
+          "comments": false,
+          "strings": false
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "lint": "node ./node_modules/tslint/bin/tslint --project tsconfig.json src/**/*.ts",
+    "pretest": "npm run lint",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.11.6",
+    "mocha": "^6.2.0",
+    "tslint": "^5.18.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typemoq": "^2.1.0",
+    "typescript": "^3.5.3",
+    "vscode": "^1.1.33"
+  },
+  "dependencies": {}
 }
