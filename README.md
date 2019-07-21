@@ -158,9 +158,13 @@ Of course, feel free to modify this to your liking, and look at the scopes conta
 
 ## Known Issues
 
-Currently no known issues for this extension.
+* The vertical alignment guides are not centered. I'm sure there must be a way to do this, but if so I haven't been able to think of it!
 
 Find an issue/bug? [Report it](https://github.com/kagof/VSCode-Befunge-syntax-highlighting/issues/new)!
+
+## Contributing
+
+Contributions are encouraged - whether pull requests, bug reports, documentation, or feature requests. Please read, understand, and agree to the [Contributing Guidelines & Code of Conduct](https://github.com/kagof/VSCode-Befunge-syntax-highlighting/blob/branch/CONTRIBUTING.md) first.
 
 ## Source
 
