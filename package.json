@@ -151,7 +151,7 @@
     "@types/node": "^10.11.6",
     "mocha": "^6.2.0",
     "tslint": "^5.18.0",
-    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-airbnb": "^5.11.2",
     "typemoq": "^2.1.0",
     "typescript": "^3.5.3",
     "vscode": "^1.1.33"
