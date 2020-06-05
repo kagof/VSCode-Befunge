@@ -153,7 +153,7 @@
     "tslint": "^5.18.0",
     "tslint-config-airbnb": "^5.11.1",
     "typemoq": "^2.1.0",
-    "typescript": "^3.5.3",
+    "typescript": "^3.9.5",
     "vscode": "^1.1.33"
   },
   "dependencies": {}
