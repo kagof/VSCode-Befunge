@@ -5,6 +5,10 @@
 [![Build Status](https://img.shields.io/travis/kagof/VSCode-Befunge.svg)](https://travis-ci.org/kagof/VSCode-Befunge)
 [![Known Vulnerabilities](https://snyk.io/test/github/kagof/vscode-befunge/badge.svg?targetFile=package.json)](https://snyk.io/test/github/kagof/vscode-befunge?targetFile=package.json)
 
+## Not Maintained
+
+Note that this plugin is no longer maintained. Pull requests will gladly be accepted to update it to conform with new VS Code standards & remove vulnerabilities.
+
 ## Features
 
 * Implements Syntax Highlighting in VS Code for [Befunge-93](https://esolangs.org/wiki/Befunge) and [Befunge-98](https://esolangs.org/wiki/Funge-98) programming languages.
